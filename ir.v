@@ -3,6 +3,25 @@
 // Company: 
 // Engineer: 
 // 
+// Create Date: 2023/05/20 10:44:21
+// Design Name: 
+// Module Name: ir
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
 // Create Date: 2023/03/18 11:44:04
 // Design Name: 
 // Module Name: ir
@@ -51,4 +70,6 @@ always @(posedge clk) begin
   assign w[3:0] =(ei)? instr_out_l1:4'hz;
 
 endmodule
+
+
 

@@ -27,7 +27,9 @@ module  pc (                 // program_counter
     input inc,           // 计数器加一信号    lp
     input ep,            //ep 有效时，pc当前值被送上总线
     input t3,
-    output wire [3:0]pc  // 程序计数器的输出，8 位二进制数
+    input cp,
+    input po,
+    inout wire [3:0]pc  // 程序计数器的输出，8 位二进制数
 );
 reg [3:0]pc1;
 always @(posedge clk) begin
@@ -37,6 +39,12 @@ always @(posedge clk) begin
     if (reset&t3) begin   // 开始时将计数器清零
         pc1 <= 0;
     end 
+    if (cp) begin   // 开始时将计数器清零
+        pc1 <= pc1 + 1;
+    end 
+    if (po) begin
+        pc1 <= pc;
+    end
     if (inc) begin  // 如果加一信号为高电平，计数器加一    lp
         pc1 = pc1 + 1;
     end else begin     // 否则，程序计数器不变
