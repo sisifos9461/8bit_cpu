@@ -3,6 +3,23 @@
 // Company: 
 // Engineer: 
 // 
+// Create Date: 2023/05/24 11:18:14
+// Design Name: 
+// Module Name: register_group
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// /////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
 // Create Date: 2023/03/20 09:11:18
 // Design Name: 
 // Module Name: alu_adder
@@ -90,11 +107,10 @@ module register_group(input clk,clr,la,lb,ea,ev,co,n,inout [7:0]w,output cp);
     wire [7:0]a;
     wire [7:0]b;
     register register_a(clk,clr,w,la,a);
-    register register_b(clk,clr,w,lb,b);
+    register_n register_n(clk,n,clr,w,lb,b);
     alu_adder alu_adder_a(a,b,ev,w,cout);
-    always    #0.025 $display($realtime,"%b,%b",a,b);
+    always    #0.025 $display($realtime,"%b,%b,%b",a,b,w);
 
     assign w = (ea)?a:8'bzz;
     assign cp = (a>b)?co:1'b0;
 endmodule
-
